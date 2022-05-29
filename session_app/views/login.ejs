@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UACompatible" content="ie=edge">
+    <title>ログイン</title>
+  </head>
+  <body>
+    <main>
+      <h1>ログイン画面</h1>
+      <form action="/login" method="POST" class="form">
+
+        <div class="form_text">
+          LoginID: <input type="text" name="username">   
+        </div>                                          
+        
+        <div>
+          Password: <input type="text" name="password">
+        </div>
+        
+        <input id="submit" type="submit" value="ログイン">
+        
+      </form>
+      <p><%=err %></p>
+    </main>
+  </body>
+</html>
