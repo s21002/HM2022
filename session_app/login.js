@@ -10,8 +10,22 @@ const connection = mysql.createConnection({
   database: 'mydb'
 });
 const session = require('express-session');
+const DynamoDBStore = require('connect-dynamodb')(session)
+const DynamoDBStoreOptions = {
+  table: "db-session",
+  AWSConfigJSON: {
+    region: 'us-east-1',
+    correctClockSkew: true,
+    httpOption: {
+      secureProtocol: 'TLSv1_method',
+      ciphers: "ALL"
+    },
+  },
+}
 app.use(session({
-  secret: 'secret',
+  store: new DynamoDBStore(DynamoDBStoreOptions),
+  name: 'session-name',
+  secret: 'session-secret-key',
   resave: false,
   saveUninitialized: false
 }));
