@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const auth = require('./controller/auth')
 const login = require('./controller/login')
 const download = require('./controller/download')
-const laodfile = require('./controller/laodfile')
+const loadfile = require('./controller/loadfile')
 const DynamoDBStore = require('connect-dynamodb')(session)
 
 const app = express()
@@ -27,7 +27,7 @@ app.use('/', session({
 app.set('view engine', 'ejs',)
 
 
-app.get('/', auth, laodfile,(req, res) => {
+app.get('/', auth, loadfile,(req, res) => {
   const user = req.session.user
   const files = res.locals.file
   res.render('next.ejs',{
